@@ -27,15 +27,155 @@ Step 6: Get contacts details and Display details give in MainActivity file.
 Step 7: Save and run the application.
 
 ## PROGRAM:
-```
-/*
-Program to print the list of item.
-Developed by:
-Registeration Number :
-*/
-```
+Activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/simpleListview"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Activity_listview.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="173dp"
+        android:layout_height="95dp"
+        android:layout_weight="1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+</LinearLayout>
+
+CustomAdapter.java
+
+package com.example.imagelistview;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class CustomAdapter extends BaseAdapter {
+    Context context;
+    String countryList[];
+    int flags[];
+    LayoutInflater inflter;
+
+    public CustomAdapter(Context applicationContext, String[] countryList, int[] flags) {
+        this.context = context;
+        this.countryList = countryList;
+        this.flags = flags;
+        inflter = (LayoutInflater.from(applicationContext));
+    }
+
+    @Override
+    public int getCount() {
+        return countryList.length;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = inflter.inflate(R.layout.activity_listview, null);
+        TextView country = (TextView) view.findViewById(R.id.textView);
+        ImageView icon = (ImageView) view.findViewById(R.id.imageView2);
+        country.setText(countryList[i]);
+        icon.setImageResource(flags[i]);
+        return view;
+    }
+}
+
+MainActivity.java
+
+package com.example.imagelistview;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class CustomAdapter extends BaseAdapter {
+    Context context;
+    String countryList[];
+    int flags[];
+    LayoutInflater inflter;
+
+    public CustomAdapter(Context applicationContext, String[] countryList, int[] flags) {
+        this.context = context;
+        this.countryList = countryList;
+        this.flags = flags;
+        inflter = (LayoutInflater.from(applicationContext));
+    }
+
+    @Override
+    public int getCount() {
+        return countryList.length;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = inflter.inflate(R.layout.activity_listview, null);
+        TextView country = (TextView) view.findViewById(R.id.textView);
+        ImageView icon = (ImageView) view.findViewById(R.id.imageView2);
+        country.setText(countryList[i]);
+        icon.setImageResource(flags[i]);
+        return view;
+    }
+}
+
 
 ## OUTPUT
+![316378967-bebbcd85-7484-48c3-bb36-bceca22da480](https://github.com/Ritz514/listview-120/assets/142646304/62f9ba92-1daa-4e5d-8089-04bddd8ae6c4)
+
+
 
 
 
